@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Footer = () => {
     return (
         <footer style={{ backgroundColor: '#0f172a', color: 'white', padding: '4rem 0', marginTop: '4rem' }}>
@@ -30,5 +29,4 @@ const Footer = () => {
         </footer>
     )
 }
-
 export default Footer

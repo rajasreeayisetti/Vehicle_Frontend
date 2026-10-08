@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Car, User, LayoutDashboard, LogIn, LogOut } from 'lucide-react'
-
 const Navbar = () => {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
-
     useEffect(() => {
         const userInfo = localStorage.getItem('userInfo')
         if (userInfo) {
             setUser(JSON.parse(userInfo))
         }
     }, [])
-
     const handleLogout = () => {
         localStorage.removeItem('userInfo')
         localStorage.removeItem('token')
         setUser(null)
         navigate('/login')
     }
-
     return (
         <nav className="navbar">
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -56,5 +52,4 @@ const Navbar = () => {
         </nav>
     )
 }
-
 export default Navbar

@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import api from '../services/api'
-
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-
     // Clear stale data on mount to fix "Cast to ObjectId" issues from failed mock attempts
     React.useEffect(() => {
         localStorage.removeItem('userInfo')
         localStorage.removeItem('token')
     }, [])
-
     const handleLogin = async (e) => {
         e.preventDefault()
         console.log('Attempting login for:', email)
@@ -27,7 +24,6 @@ const Login = () => {
             alert(error.response?.data?.message || 'Login failed')
         }
     }
-
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
             <div style={{ width: '100%', maxWidth: '400px', padding: '2.5rem', background: 'white', borderRadius: '16px', boxShadow: 'var(--shadow-lg)' }}>
@@ -69,5 +65,4 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login
+export default Login;

@@ -9,7 +9,6 @@ import Login from './pages/Login'
 import VehicleList from './components/Vehicle/VehicleList'
 import RegisterCustomer from './components/Customer/RegisterCustomer'
 import BookVehicle from './components/Booking/BookVehicle'
-
 function App() {
     return (
         <Router>
@@ -31,5 +30,4 @@ function App() {
         </Router>
     )
 }
-
 export default App

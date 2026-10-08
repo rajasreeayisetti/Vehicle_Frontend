@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import api from '../../services/api'
 import { UserPlus, Mail, Phone, MapPin, Lock } from 'lucide-react'
-
 const RegisterCustomer = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -12,7 +11,6 @@ const RegisterCustomer = () => {
         password: ''
     })
     const navigate = useNavigate()
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -23,7 +21,6 @@ const RegisterCustomer = () => {
             alert('Registration failed: ' + error.response?.data?.message)
         }
     }
-
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '4rem 0' }}>
             <div style={{ width: '100%', maxWidth: '500px', padding: '3rem', background: 'white', borderRadius: '24px', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border)' }}>
@@ -34,7 +31,6 @@ const RegisterCustomer = () => {
                     <h2 style={{ fontSize: '2rem', fontWeight: 700, color: '#1e293b' }}>Join DriveEase</h2>
                     <p style={{ color: '#64748b' }}>Create an account to start your journey today.</p>
                 </div>
-
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label className="label">Full Name</label>
@@ -43,7 +39,6 @@ const RegisterCustomer = () => {
                             <UserPlus size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                         </div>
                     </div>
-
                     <div className="form-group">
                         <label className="label">Email Address</label>
                         <div style={{ position: 'relative' }}>
@@ -51,7 +46,6 @@ const RegisterCustomer = () => {
                             <Mail size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                         </div>
                     </div>
-
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                         <div className="form-group">
                             <label className="label">Phone</label>
@@ -68,7 +62,6 @@ const RegisterCustomer = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className="form-group">
                         <label className="label">Address</label>
                         <div style={{ position: 'relative' }}>
@@ -76,12 +69,10 @@ const RegisterCustomer = () => {
                             <MapPin size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
                         </div>
                     </div>
-
                     <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '1rem', marginTop: '1rem', fontSize: '1.1rem' }}>
                         Create Account
                     </button>
                 </form>
-
                 <p style={{ marginTop: '2rem', textAlign: 'center', color: '#64748b' }}>
                     Already have an account? <Link to="/login" style={{ color: '#2563eb', fontWeight: 600 }}>Sign in</Link>
                 </p>
@@ -89,5 +80,4 @@ const RegisterCustomer = () => {
         </div>
     )
 }
-
 export default RegisterCustomer

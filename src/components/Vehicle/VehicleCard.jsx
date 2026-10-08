@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Fuel, Users, Navigation, CheckCircle } from 'lucide-react'
-
 const VehicleCard = ({ vehicle }) => {
+    const regNo = vehicle.regNumber || (`DE-` + String(vehicle._id).slice(-6).toUpperCase());
     return (
         <div className="vehicle-card">
             <div style={{ position: 'relative' }}>
@@ -18,9 +18,13 @@ const VehicleCard = ({ vehicle }) => {
                 </div>
             </div>
             <div className="vehicle-info">
-                <p className="vehicle-type">{vehicle.vehicleType}</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <p className="vehicle-type">{vehicle.vehicleType}</p>
+                    <span style={{ fontSize: '0.75rem', background: '#f1f5f9', padding: '0.15rem 0.5rem', borderRadius: '4px', fontWeight: 600, color: '#475569' }}>
+                        {regNo}
+                    </span>
+                </div>
                 <h3 className="vehicle-name">{vehicle.vehicleName}</h3>
-
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', margin: '1rem 0', padding: '1rem 0', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#64748b', fontSize: '0.875rem' }}>
                         <Fuel size={16} /> <span>Automatic</span>
@@ -37,10 +41,9 @@ const VehicleCard = ({ vehicle }) => {
                         <CheckCircle size={16} /> <span>Insured</span>
                     </div>
                 </div>
-
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                        <p className="vehicle-price">${vehicle.pricePerDay} <span>/day</span></p>
+                        <p className="vehicle-price">₹{vehicle.pricePerDay} <span>/day</span></p>
                     </div>
                     <Link to={`/book/${vehicle._id}`} className="btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
                         Book Now
@@ -50,5 +53,4 @@ const VehicleCard = ({ vehicle }) => {
         </div>
     )
 }
-
-export default VehicleCard
+export default VehicleCard;

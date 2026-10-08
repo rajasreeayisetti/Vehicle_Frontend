@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../services/api'
 import { Plus, Trash2, Edit3, Car } from 'lucide-react'
-
 const AdminPanel = () => {
     const [vehicles, setVehicles] = useState([])
     const [showAddModal, setShowAddModal] = useState(false)
@@ -12,16 +11,13 @@ const AdminPanel = () => {
         gpsEnabled: false,
         imageUrl: ''
     })
-
     useEffect(() => {
         fetchVehicles()
     }, [])
-
     const fetchVehicles = async () => {
         const { data } = await api.get('/vehicles')
         setVehicles(data)
     }
-
     const handleAddVehicle = async (e) => {
         e.preventDefault()
         try {
@@ -33,14 +29,12 @@ const AdminPanel = () => {
             alert('Error adding vehicle')
         }
     }
-
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this vehicle?')) {
             await api.delete(`/vehicles/${id}`)
             fetchVehicles()
         }
     }
-
     return (
         <div className="container" style={{ padding: '4rem 0' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
@@ -52,7 +46,6 @@ const AdminPanel = () => {
                     <Plus size={20} /> Add New Vehicle
                 </button>
             </div>
-
             <div style={{ background: 'white', borderRadius: '16px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                     <thead style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
@@ -73,7 +66,7 @@ const AdminPanel = () => {
                                     {v.vehicleName}
                                 </td>
                                 <td style={{ padding: '1.25rem' }}>{v.vehicleType}</td>
-                                <td style={{ padding: '1.25rem' }}>${v.pricePerDay}</td>
+                                <td style={{ padding: '1.25rem' }}>₹{v.pricePerDay}</td>
                                 <td style={{ padding: '1.25rem' }}>{v.gpsEnabled ? 'Yes' : 'No'}</td>
                                 <td style={{ padding: '1.25rem' }}>
                                     <span className={`badge ${v.availability ? 'badge-success' : 'badge-error'}`}>
@@ -91,7 +84,6 @@ const AdminPanel = () => {
                     </tbody>
                 </table>
             </div>
-
             {showAddModal && (
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2000 }}>
                     <div style={{ background: 'white', padding: '2rem', borderRadius: '16px', width: '100%', maxWidth: '500px' }}>
@@ -113,7 +105,7 @@ const AdminPanel = () => {
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                 <div className="form-group">
-                                    <label className="label">Price per Day ($)</label>
+                                    <label className="label">Price per Day (₹)</label>
                                     <input type="number" className="input" required value={newVehicle.pricePerDay} onChange={e => setNewVehicle({ ...newVehicle, pricePerDay: e.target.value })} />
                                 </div>
                                 <div className="form-group">
@@ -139,5 +131,4 @@ const AdminPanel = () => {
         </div>
     )
 }
-
-export default AdminPanel
+export default AdminPanel;

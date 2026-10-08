@@ -18,38 +18,32 @@
     --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.04), 0 4px 6px -4px rgb(0 0 0 / 0.02);
     --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Outfit', sans-serif;
     background-color: var(--background);
     color: var(--text-main);
     line-height: 1.5;
 }
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
 button {
     cursor: pointer;
     border: none;
     outline: none;
     font-family: inherit;
 }
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
-
 /* Glassmorphism Effect */
 .glass {
     background: rgba(255, 255, 255, 0.7);
@@ -57,24 +51,20 @@ button {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
-
 /* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
 .animate-fade-in {
     animation: fadeIn 0.5s ease forwards;
 }
-
 /* Navbar styles */
 .navbar {
     height: 80px;
@@ -88,7 +78,6 @@ button {
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
 .nav-logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -97,23 +86,19 @@ button {
     align-items: center;
     gap: 0.5rem;
 }
-
 .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
 }
-
 .nav-link {
     font-weight: 500;
     color: var(--text-main);
     transition: color 0.2s;
 }
-
 .nav-link:hover {
     color: var(--primary);
 }
-
 .btn-primary {
     background-color: var(--primary);
     color: white;
@@ -125,13 +110,11 @@ button {
     align-items: center;
     gap: 0.5rem;
 }
-
 .btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-1px);
     box-shadow: var(--shadow);
 }
-
 /* Vehicle Card Grid */
 .vehicle-grid {
     display: grid;
@@ -139,7 +122,6 @@ button {
     gap: 2rem;
     padding: 2rem 0;
 }
-
 .vehicle-card {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -148,29 +130,24 @@ button {
     transition: all 0.3s;
     border: 1px solid var(--border);
 }
-
 .vehicle-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
-
 .vehicle-image {
     width: 100%;
     height: 200px;
     background-color: #eee;
     object-fit: cover;
 }
-
 .vehicle-info {
     padding: 1.5rem;
 }
-
 .vehicle-name {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
-
 .vehicle-type {
     color: var(--text-muted);
     font-size: 0.875rem;
@@ -178,65 +155,54 @@ button {
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
 }
-
 .vehicle-price {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary);
 }
-
 .vehicle-price span {
     font-size: 0.875rem;
     color: var(--text-muted);
     font-weight: 400;
 }
-
 .badge {
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 600;
 }
-
 .badge-success {
     background: #dcfce7;
     color: #166534;
 }
-
 .badge-error {
     background: #fee2e2;
     color: #991b1b;
 }
-
 /* Dashboard layout */
 .dashboard-container {
     display: grid;
     grid-template-columns: 250px 1fr;
     min-height: calc(100vh - 80px);
 }
-
 .sidebar {
     background: white;
     border-right: 1px solid var(--border);
     padding: 2rem 1.5rem;
 }
-
 .main-content {
     padding: 2rem;
     max-width: 1200px;
 }
-
 /* Forms */
 .form-group {
     margin-bottom: 1.5rem;
 }
-
 .label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
-
 .input {
     width: 100%;
     padding: 0.75rem;
@@ -245,7 +211,6 @@ button {
     font-size: 1rem;
     transition: border-color 0.2s;
 }
-
 .input:focus {
     border-color: var(--primary);
     outline: none;

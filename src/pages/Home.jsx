@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Shield, Zap, MapPin, CreditCard } from 'lucide-react'
-
 const Home = () => {
     return (
         <div className="home-page">
@@ -59,7 +58,6 @@ const Home = () => {
                     }}
                 />
             </section>
-
             {/* Features Section */}
             <section className="container" style={{ padding: '5rem 0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -91,5 +89,4 @@ const Home = () => {
         </div>
     )
 }
-
-export default Home
+export default Home;
