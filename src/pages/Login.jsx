@@ -18,7 +18,7 @@ const Login = () => {
             console.log('Login successful:', data.name)
             localStorage.setItem('userInfo', JSON.stringify(data))
             localStorage.setItem('token', data.token)
-            window.location.href = '/dashboard'
+            navigate('/dashboard')
         } catch (error) {
             console.error('Login Error:', error.response || error)
             alert(error.response?.data?.message || 'Login failed')
