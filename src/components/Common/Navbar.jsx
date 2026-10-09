@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Car, User, LayoutDashboard, LogIn, LogOut } from 'lucide-react'
+
 const Navbar = () => {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
+    const location = useLocation()
+
     useEffect(() => {
-        const userInfo = localStorage.getItem('userInfo')
-        if (userInfo) {
-            setUser(JSON.parse(userInfo))
+        const checkUser = () => {
+            const userInfo = localStorage.getItem('userInfo')
+            if (userInfo) {
+                try {
+                    setUser(JSON.parse(userInfo))
+                } catch (e) {
+                    setUser(null)
+                }
+            } else {
+                setUser(null)
+            }
         }
-    }, [])
+        checkUser()
+    }, [location])
+
     const handleLogout = () => {
         localStorage.removeItem('userInfo')
         localStorage.removeItem('token')
         setUser(null)
         navigate('/login')
     }
+
     return (
         <nav className="navbar">
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -25,17 +39,21 @@ const Navbar = () => {
                 </Link>
                 <ul className="nav-links">
                     <li><Link to="/vehicles" className="nav-link">Fleet</Link></li>
-                    {user && <li><Link to="/dashboard" className="nav-link">My Bookings</Link></li>}
+                    {user && (
+                        <li><Link to="/dashboard" className="nav-link">My Bookings</Link></li>
+                    )}
                     <li><Link to="/admin" className="nav-link">Admin</Link></li>
                 </ul>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     {user ? (
                         <>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', fontWeight: 600 }}>
-                                <User size={20} />
-                                <span>{user.name}</span>
-                            </div>
-                            <button onClick={handleLogout} className="nav-link" style={{ background: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)', fontWeight: 600 }}>
+                                    <User size={20} color="#2563eb" />
+                                    <span>{user.name}</span>
+                                </div>
+                            </Link>
+                            <button onClick={handleLogout} className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                 <LogOut size={20} /> Logout
                             </button>
                         </>
